@@ -43,5 +43,10 @@ namespace davIT.Controllers
             EmailMessage.Send(emailMessage);
             return RedirectToAction("Contact");
         }
+
+        public ActionResult Eat2Day()
+        {
+            return View("Contact");
+        }
     }
 }

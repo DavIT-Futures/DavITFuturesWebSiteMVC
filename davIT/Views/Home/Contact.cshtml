@@ -60,5 +60,6 @@
         <div class="editor-field">@Html.TextAreaFor(model => model.Message, new {style="width: 90%;"})</div>
         @*<div class="editor-field2">@Html.EditorFor(model => model.Message)</div>*@
         <input type="submit", value="Send" />
+        <input type="button" value="Eat2Day" onclick="location.href='@Url.Action("Eat2Day", "Home")'" />
     </aside>
 }

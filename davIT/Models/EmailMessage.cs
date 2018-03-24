@@ -30,18 +30,21 @@ namespace davIT.Models
         internal static void Send(object obj)
         {
             EmailMessage emailMsg = obj as EmailMessage;
-            MailMessage m = new MailMessage();
-            SmtpClient sc = new SmtpClient();
-            m.From = new MailAddress(emailMsg.recipient, "DavIT Form");
-            m.To.Add(new MailAddress(emailMsg.recipient, "DavIT Form"));
+            if (emailMsg != null && !string.IsNullOrEmpty(emailMsg.Message))
+            {
+                MailMessage m = new MailMessage();
+                SmtpClient sc = new SmtpClient();
+                m.From = new MailAddress(emailMsg.recipient, "DavIT Form");
+                m.To.Add(new MailAddress(emailMsg.recipient, "DavIT Form"));
 
-            m.Subject = string.Format("Wiadomosc ze strony, email: {0}, tel. nr: {1}, IP: {2}", emailMsg.Sender, emailMsg.PhoneNumber, GetVisitorIpAddress(emailMsg.Request));
-            m.Body = string.Format("Treść: {0},{1}Email: {2},{3}Tel: {4},{5}IP: {6}", emailMsg.Message, Environment.NewLine, emailMsg.Sender, Environment.NewLine, emailMsg.PhoneNumber, Environment.NewLine, GetVisitorIpAddress(emailMsg.Request));
-            sc.Host = "poczta.interia.pl";
-            sc.Port = 587;
-            sc.Credentials = new System.Net.NetworkCredential("dawit@interia.pl", "Interia_99");
-            sc.EnableSsl = true; 
-            sc.Send(m);
+                m.Subject = string.Format("Wiadomosc ze strony, email: {0}, tel. nr: {1}, IP: {2}", emailMsg.Sender, emailMsg.PhoneNumber, GetVisitorIpAddress(emailMsg.Request));
+                m.Body = string.Format("Treść: {0},{1}Email: {2},{3}Tel: {4},{5}IP: {6}", emailMsg.Message, Environment.NewLine, emailMsg.Sender, Environment.NewLine, emailMsg.PhoneNumber, Environment.NewLine, GetVisitorIpAddress(emailMsg.Request));
+                sc.Host = "poczta.interia.pl";
+                sc.Port = 587;
+                sc.Credentials = new System.Net.NetworkCredential("dawit@interia.pl", "Interia_99");
+                sc.EnableSsl = true;
+                sc.Send(m);
+            }
         }
 
         private static string GetVisitorIpAddress(HttpRequestBase Req)
