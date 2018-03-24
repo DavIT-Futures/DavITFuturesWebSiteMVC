@@ -1,0 +1,64 @@
+﻿@model davIT.Models.EmailMessage
+
+<hgroup class="title">
+    <h4>@CompanyTexts.ContactMessage</h4>
+</hgroup>
+
+<article>
+        <section class="contact">
+        <header><h3>Company details: </h3></header>
+        <p>
+            @CompanyTexts.NameConst <br />
+            @CompanyTexts.ContactFullName <br />
+            ul. Ścinawska 30/8 <br />
+            53-629 Wrocław <br />
+            NIP:  6932087505 <br />
+            REGON:  021923547
+        </p>
+    </section>
+
+    <section class="contact">
+        <h3>@CompanyTexts.ContactPhoneLabel</h3>
+        <p>
+            @CompanyTexts.ContactFullName
+            <br />
+            @CompanyTexts.ContactPhoneValue
+        </p>
+    </section>
+
+    <section class="contact">
+        <h3>@CompanyTexts.ContactEmailLabel</h3>
+        <p>
+            <a href=@CompanyTexts.ContactEmailHref>@CompanyTexts.ContactEmailValue</a>
+        </p>
+    </section>
+
+
+</article>
+
+@using (Html.BeginForm())
+{
+    <aside>
+        <br /><br /><br />
+@*        <legend>
+            Send a message (please enter your email address or phone number):
+        </legend>*@
+        <table>
+            <tbase>
+                <tr>Send a message (please enter your email address or phone number):</tr>
+                <tr>
+                    <td><div class="editor-label">E-mail: </div></td>
+                    <td><div class="editor-field">@Html.EditorFor(model => model.Sender)</div></td>
+                </tr>
+                <tr>
+                    <td><div class="editor-label">Phone no: </div></td>
+                    <td><div class="editor-field">@Html.EditorFor(model => model.PhoneNumber)</div></td>
+                </tr>
+            </tbase>
+        </table>
+        <h4>Message:</h4>
+        <div class="editor-field">@Html.TextAreaFor(model => model.Message, new {style="width: 90%;"})</div>
+        @*<div class="editor-field2">@Html.EditorFor(model => model.Message)</div>*@
+        <input type="submit", value="Send" />
+    </aside>
+}
