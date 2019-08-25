@@ -23,7 +23,7 @@ namespace davIT.Models
         #region index
         public static string IndexTitle = "DavIT";
         public static string IndexMessage = "Custom software development";
-        public static string IndexParagraph1 = "Mobile, web and desktop applications. Server side, backend and data access innovative solitions.";
+        public static string IndexParagraph1 = "Mobile, web and desktop applications. Server side, backend and data access innovative solutions.";
         //public static string IndexLink1Href = @"http://asp.net/mvc";
         //public static string IndexLink1Title = "ASP.NET_MVC_4";
         //public static string IndexLink1bHref = @"http://www.windowsphone.com";
