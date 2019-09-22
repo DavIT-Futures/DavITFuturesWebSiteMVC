@@ -41,7 +41,6 @@ namespace davIT.Models
                 m.Body = string.Format("Treść: {0},{1}Email: {2},{3}Tel: {4},{5}IP: {6}", emailMsg.Message, Environment.NewLine, emailMsg.Sender, Environment.NewLine, emailMsg.PhoneNumber, Environment.NewLine, GetVisitorIpAddress(emailMsg.Request));
                 sc.Host = "poczta.interia.pl";
                 sc.Port = 587;
-                sc.Credentials = new System.Net.NetworkCredential("dawit@interia.pl", "Interia_99");
                 sc.EnableSsl = true;
                 sc.Send(m);
             }
