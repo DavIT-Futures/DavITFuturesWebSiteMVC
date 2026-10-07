@@ -37,6 +37,7 @@ namespace davIT.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Contact(EmailMessage emailMessage)
         {
             emailMessage.Request = Request;
