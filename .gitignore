@@ -1,1 +1,8 @@
 packages/
+.vs/
+bin/
+obj/
+*.user
+UpgradeLog*.htm
+_UpgradeReport_Files/
+Backup*/

@@ -9,7 +9,7 @@ namespace davIT.Models
     {
         public static bool Contains(this HttpRequestBase req, string variable)
         {
-            foreach (var item in req.ServerVariables.Keys)
+            foreach (string item in req.ServerVariables.Keys)
             {
                 if (item == variable)
                     return true;
