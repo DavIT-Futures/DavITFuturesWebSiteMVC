@@ -1,4 +1,4 @@
-# 🌐 DavIT Futures – Strona Firmowa
+# 🌐 DavIT Futures – Website / Strona Firmowa
 
 <div align="center">
 
@@ -11,32 +11,110 @@
 
 <br />
 
-**Oficjalna witryna internetowa firmy DavIT Futures (Dawid Domagała).**  
-Dedykowane oprogramowanie na zamówienie: aplikacje mobilne, webowe, desktopowe oraz systemy serwerowe/backendowe.
-
-[🚀 Zobacz wersję online](https://davit-futures.github.io/DavITFuturesWebSiteMVC/) • [✉️ Kontakt](#-kontakt) • [🛠️ Technologie](#%EF%B8%8F-stack-technologiczny)
+### 🌐 Select Language / Wybierz Język
+**[🇬🇧 English Version](#-english-version)** • **[🇵🇱 Wersja Polska](#-wersja-polska)**
 
 ---
 
 </div>
 
-## 📌 O Projekcie
+<a id="english-version"></a>
+## 🇬🇧 English Version
 
-Repozytorium zawiera kod źródłowy strony internetowej **DavIT Futures**:
-* **Część backendowa (klasyczna):** Aplikacja internetowa stworzona w oparciu o wzorzec **MVC (Model-View-Controller)** w technologii **ASP.NET MVC 5.3** i **.NET Framework 4.8**.
-* **Wdrożenie statyczne (GitHub Pages):** Automatyczny eksport i publikacja plików HTML, CSS i JS w ramach potoku CI/CD **GitHub Actions**, zintegrowany z bezserwerową obsługą formularza kontaktowego (**FormSubmit**).
+### 📌 About The Project
+Official corporate website for **DavIT Futures** (Dawid Domagała).  
+DavIT Futures delivers custom software solutions: mobile applications, web platforms, desktop software, and high-performance server/backend APIs.
 
----
+* **Backend (.NET Framework 4.8):** Built using the classic **ASP.NET MVC 5.3** architectural pattern (Model-View-Controller) with Razor views.
+* **Static Deployment (GitHub Pages):** Automated CI/CD pipeline using **GitHub Actions** that builds and deploys static production assets, integrated with serverless contact form delivery via **FormSubmit**.
 
-## 🚀 Live Demo
-
-Strona jest hostowana na platformie **GitHub Pages** pod adresem:
+### 🚀 Live Demo
+The site is hosted and available online at:  
 👉 **[https://davit-futures.github.io/DavITFuturesWebSiteMVC/](https://davit-futures.github.io/DavITFuturesWebSiteMVC/)**
 
+### 🛠️ Tech Stack
+| Component | Technology | Version |
+| :--- | :--- | :--- |
+| **Backend Runtime** | C#, .NET Framework | `4.8` |
+| **Web Framework** | ASP.NET MVC | `5.3.0` |
+| **View Engine** | Razor (`.cshtml`) | `3.3.0` |
+| **Asset Optimization** | Microsoft.AspNet.Web.Optimization (WebGrease, Antlr) | `1.1.3` |
+| **Frontend Libraries** | jQuery, Modernizr | `3.7.1` / `2.8.3` |
+| **Styles** | Custom CSS3 stylesheet | `Site.css` |
+| **Contact Form** | FormSubmit (AJAX + fallback POST) | Serverless |
+| **CI/CD & Hosting** | GitHub Actions + GitHub Pages | Automated |
+
+### 📂 Repository Structure
+```text
+DavITFuturesWebSiteMVC/
+├── .github/workflows/deploy.yml # GitHub Actions deployment workflow
+├── davIT/                      # Full ASP.NET MVC project (.NET 4.8)
+│   ├── App_Start/              # Bundles, filters, and routing configuration
+│   ├── Content/                # Stylesheets (Site.css)
+│   ├── Controllers/            # HomeController (Index, Contact, About, Futures)
+│   ├── Images/                 # Icons, backgrounds, and graphical assets
+│   ├── Models/                 # Data models (CompanyTexts, EmailMessage)
+│   ├── Scripts/                # Client-side scripts (jQuery, Modernizr)
+│   ├── Views/                  # Razor views (.cshtml) and layout templates
+│   ├── davIT.csproj            # MSBuild project file
+│   └── Web.config              # IIS / ASP.NET application configuration
+├── public/                     # Pre-rendered static assets deployed to Pages
+│   ├── index.html              # Home page
+│   ├── contact.html            # Contact page with serverless form
+│   ├── about.html              # About page
+│   ├── futures.html            # Futures trading & algorithms page
+│   ├── 404.html                # Custom 404 error page
+│   ├── Content/                # Production stylesheets
+│   ├── Images/                 # Production images
+│   ├── Scripts/                # Production JavaScript libraries
+│   └── .nojekyll               # Disables Jekyll processing on GitHub Pages
+├── davIT.sln                   # Visual Studio Solution file
+└── README.md                   # Project documentation (Bilingual)
+```
+
+### ✉️ Contact Form
+The static version on GitHub Pages uses **FormSubmit** for serverless message delivery:
+* **Asynchronous Submission (AJAX):** Feedback is shown in-page without reloading.
+* **Anti-Spam:** Integrated honeypot field (`_honey`).
+* **Recipient:** Delivered directly to `davit.futures@gmail.com`.
+
+### ⚙️ How to Run Locally
+#### Option 1: Visual Studio (ASP.NET MVC)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DavIT-Futures/DavITFuturesWebSiteMVC.git
+   ```
+2. Open `davIT.sln` in **Visual Studio 2022** (or later).
+3. Restore NuGet Packages (`Restore NuGet Packages`).
+4. Press `F5` to run with IIS Express.
+
+#### Option 2: Static Site Preview
+1. Navigate to the `public/` directory.
+2. Run any static HTTP server, for example:
+   ```bash
+   npx serve public
+   # or with Python:
+   python -m http.server -d public 8080
+   ```
+3. Open `http://localhost:8080` in your browser.
+
 ---
 
-## 🛠️ Stack Technologiczny
+<a id="wersja-polska"></a>
+## 🇵🇱 Wersja Polska
 
+### 📌 O Projekcie
+Oficjalna witryna internetowa firmy **DavIT Futures** (Dawid Domagała).  
+Dedykowane oprogramowanie na zamówienie: aplikacje mobilne, webowe, desktopowe oraz systemy serwerowe/backendowe.
+
+* **Część backendowa (.NET Framework 4.8):** Aplikacja internetowa stworzona w oparciu o wzorzec **MVC (Model-View-Controller)** w technologii **ASP.NET MVC 5.3**.
+* **Wdrożenie statyczne (GitHub Pages):** Automatyczny eksport i publikacja plików HTML, CSS i JS w ramach potoku CI/CD **GitHub Actions**, zintegrowany z bezserwerową obsługą formularza kontaktowego (**FormSubmit**).
+
+### 🚀 Live Demo
+Strona jest hostowana na platformie **GitHub Pages** pod adresem:  
+👉 **[https://davit-futures.github.io/DavITFuturesWebSiteMVC/](https://davit-futures.github.io/DavITFuturesWebSiteMVC/)**
+
+### 🛠️ Stack Technologiczny
 | Warstwa | Technologia / Narzędzie | Wersja |
 | :--- | :--- | :--- |
 | **Backend / Środowisko** | C#, .NET Framework | `4.8` |
@@ -48,53 +126,14 @@ Strona jest hostowana na platformie **GitHub Pages** pod adresem:
 | **Formularz kontaktowy** | FormSubmit (AJAX + fallback POST) | Bezserwerowy |
 | **CI/CD & Hosting** | GitHub Actions + GitHub Pages | Automatyczny deploy |
 
----
-
-## 📂 Struktura Projektu
-
-```text
-DavITFuturesWebSiteMVC/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # Workflow GitHub Actions publikujący stronę na Pages
-├── davIT/                      # Kompletny projekt ASP.NET MVC (.NET Framework 4.8)
-│   ├── App_Start/              # Konfiguracja routingu, bundli i filtrów
-│   ├── Content/                # Arkusze stylów CSS (Site.css)
-│   ├── Controllers/            # Kontroler HomeController (Index, Contact, About, Futures)
-│   ├── Images/                 # Ikony, tła i elementy graficzne
-│   ├── Models/                 # Modele danych (CompanyTexts, EmailMessage)
-│   ├── Scripts/                # Skrypty klienckie (jQuery, Modernizr)
-│   ├── Views/                  # Widoki Razor (.cshtml) i layouty (_Layout.cshtml)
-│   ├── davIT.csproj            # Plik projektu MSBuild
-│   └── Web.config              # Konfiguracja aplikacji IIS/ASP.NET
-├── public/                     # Wygenerowana zoptymalizowana wersja statyczna
-│   ├── index.html              # Strona główna
-│   ├── contact.html            # Strona kontaktu z formularzem
-│   ├── about.html              # O firmie
-│   ├── futures.html            # Sekcja Futures
-│   ├── 404.html                # Dedykowana strona błędu 404
-│   ├── Content/                # Style produkcyjne
-│   ├── Images/                 # Zasoby graficzne
-│   ├── Scripts/                # Skrypty produkcyjne
-│   └── .nojekyll               # Flaga dla GitHub Pages
-├── davIT.sln                   # Plik rozwiązania Visual Studio
-└── README.md                   # Niniejsza dokumentacja
-```
-
----
-
-## ✉️ Obsługa Formularza Kontaktowego
-
+### ✉️ Obsługa Formularza Kontaktowego
 W wersji statycznej na GitHub Pages formularz kontaktowy zintegrowany jest z serwisem **FormSubmit**:
-* **Asynchroniczna wysyłka (AJAX):** Użytkownik otrzymuje informację o wysłaniu wiadomości bez przeładowania strony.
+* **Asynchroniczna wysyłka (AJAX):** Informacja o wysłaniu wiadomości bez przeładowania strony.
 * **Ochrona antyspamowa:** Wbudowane pole honeypot (`_honey`) chroniące przed botami.
 * **Adres docelowy:** Wiadomości trafiają bezpośrednio na skrzynkę: `davit.futures@gmail.com`.
 
----
-
-## ⚙️ Uruchomienie Lokalne
-
-### Opcja 1: Pełna aplikacja w Visual Studio (ASP.NET MVC)
+### ⚙️ Uruchomienie Lokalne
+#### Opcja 1: Pełna aplikacja w Visual Studio (ASP.NET MVC)
 1. Sklonuj repozytorium:
    ```bash
    git clone https://github.com/DavIT-Futures/DavITFuturesWebSiteMVC.git
@@ -103,9 +142,9 @@ W wersji statycznej na GitHub Pages formularz kontaktowy zintegrowany jest z ser
 3. Przywróć pakiety NuGet (`Restore NuGet Packages`).
 4. Uruchom projekt klawiszem `F5` (IIS Express).
 
-### Opcja 2: Podgląd wersji statycznej
+#### Opcja 2: Podgląd wersji statycznej
 1. Przejdź do katalogu `public/`.
-2. Uruchom dowolny lokalny serwer HTTP, np.:
+2. Uruchom serwer HTTP:
    ```bash
    npx serve public
    # lub Python:
@@ -115,18 +154,9 @@ W wersji statycznej na GitHub Pages formularz kontaktowy zintegrowany jest z ser
 
 ---
 
-## 🔄 CI/CD (GitHub Actions)
-
-Każdy `git push` do gałęzi `main`:
-1. Uruchamia workflow z pliku [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
-2. Pakuje zawartość katalogu `public/`.
-3. Automatycznie publikuje najnowszą wersję na **GitHub Pages**.
-
----
-
 <div align="center">
 
 © 2026 **DavIT Futures** • Dawid Domagała  
-Wrocław, Polska
+Wrocław, Poland / Polska
 
 </div>
