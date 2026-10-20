@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>DavIT Futures - Contact</title>
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="description" content="Strona firmowa DavIT Futures Dawid Domagała programowanie c#">
+        <meta name="keywords" content="DavIT, Futures, Dawid Domagała, programowanie, C#, Windows 8, Windows Phone 8, ASP.NET, MVC 4, ASP.NET MVC 4, WPF, WCF, WinForms, WebServices, Dawid, Domagała">
+        <meta name="viewport" content="width=device-width" />
+        <link href="Content/Site.css" rel="stylesheet" />
+        <script src="Scripts/modernizr-2.8.3.js"></script>
+    </head>
+    <body>
+        <h1>
+            DavIT Futures Dawid Domagała programowanie c# wpf wcf asp.net mvc windows phone
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        <a href="index.html">DavIT Futures</a>
+                    </p>
+                </div>
+                <div class="float-right">
+                    <nav>
+                        <ul id="menu">
+                            <li><a href="index.html">DavIT</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </h1>
+            
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">
+                <hgroup class="title">
+                    <h4></h4>
+                </hgroup>
+
+                <article>
+                    <section class="contact">
+                        <header><h3>Company details: </h3></header>
+                        <p>
+                            DavIT Futures <br />
+                            Dawid Domagała <br />
+                            ul. Ścinawska 30/8 <br />
+                            53-629 Wrocław <br />
+                            NIP:  6932087505 <br />
+                            REGON:  021923547
+                        </p>
+                    </section>
+
+                    <section class="contact">
+                        <h3>Mobile: </h3>
+                        <p>
+                            Dawid Domagała
+                            <br />
+                        </p>
+                    </section>
+
+                    <section class="contact">
+                        <h3>E-mail: </h3>
+                        <p>
+                            <a href="mailto:dd@davit.com.pl">dd@davit.com.pl</a>
+                        </p>
+                    </section>
+                </article>
+
+                <aside>
+                    <br /><br /><br />
+                    <form id="contactForm" action="https://formsubmit.co/dd@davit.com.pl" method="POST">
+                        <input type="hidden" name="_subject" value="Nowa wiadomość ze strony DavIT Futures">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
+                        <table>
+                            <tbody>
+                                <tr><td colspan="2">Send a message (please enter your email address or phone number):</td></tr>
+                                <tr>
+                                    <td><div class="editor-label">E-mail: </div></td>
+                                    <td><div class="editor-field"><input type="email" name="Sender" id="Sender" required class="text-box single-line" /></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="editor-label">Phone no: </div></td>
+                                    <td><div class="editor-field"><input type="text" name="PhoneNumber" id="PhoneNumber" class="text-box single-line" /></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4>Message:</h4>
+                        <div class="editor-field">
+                            <textarea name="Message" id="Message" required style="width: 90%;" rows="6"></textarea>
+                        </div>
+                        <div id="form-status" style="margin: 10px 0; display: none;"></div>
+                        <input type="submit" id="submit-btn" value="Send" />
+                    </form>
+                </aside>
+            </section>
+        </div>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; <span id="currentYear"></span> - DavIT Futures</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="Scripts/jquery-3.7.1.min.js"></script>
+        <script>
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            $(document).ready(function () {
+                $('#contactForm').on('submit', function (e) {
+                    e.preventDefault();
+                    var $status = $('#form-status');
+                    var $submitBtn = $('#submit-btn');
+
+                    $status.removeClass('message-success message-error')
+                           .text('Sending message...')
+                           .css({ display: 'block', color: '#333' });
+                    $submitBtn.prop('disabled', true);
+
+                    var data = {
+                        Sender: $('#Sender').val(),
+                        PhoneNumber: $('#PhoneNumber').val(),
+                        Message: $('#Message').val(),
+                        _subject: 'Nowa wiadomość ze strony DavIT Futures'
+                    };
+
+                    fetch('https://formsubmit.co/ajax/dd@davit.com.pl', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(function (response) {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Submission error');
+                    })
+                    .then(function () {
+                        $status.removeClass('message-error')
+                               .addClass('message-success')
+                               .text('Thank you! Your message has been sent.')
+                               .css('color', '#1b641e');
+                        $('#contactForm')[0].reset();
+                        $submitBtn.prop('disabled', false);
+                    })
+                    .catch(function (error) {
+                        // Fallback to standard POST (handles initial FormSubmit activation email if not yet activated)
+                        $('#contactForm')[0].submit();
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
