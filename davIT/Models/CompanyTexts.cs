@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -63,7 +63,7 @@ namespace davIT.Models
         public static string ContactPhoneLabel = "Mobile: ";
         public static string ContactPhoneValue = "";
         public static string ContactEmailLabel = "E-mail: ";
-        public static string ContactEmailValue = "dd@davit.com.pl";
+        public static string ContactEmailValue = "davit.futures@gmail.com";
         public static string ContactEmailHref = mailTo + ContactEmailValue;
         #endregion contact
 

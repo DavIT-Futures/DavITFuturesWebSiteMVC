@@ -42,7 +42,6 @@
                         <p>
                             DavIT Futures <br />
                             Dawid Domagała <br />
-                            ul. Ścinawska 30/8 <br />
                             53-629 Wrocław <br />
                             NIP:  6932087505 <br />
                             REGON:  021923547
@@ -60,14 +59,14 @@
                     <section class="contact">
                         <h3>E-mail: </h3>
                         <p>
-                            <a href="mailto:dd@davit.com.pl">dd@davit.com.pl</a>
+                            <a href="mailto:davit.futures@gmail.com">davit.futures@gmail.com</a>
                         </p>
                     </section>
                 </article>
 
                 <aside>
                     <br /><br /><br />
-                    <form id="contactForm" action="https://formsubmit.co/dd@davit.com.pl" method="POST">
+                    <form id="contactForm" action="https://formsubmit.co/davit.futures@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="Nowa wiadomość ze strony DavIT Futures">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
@@ -126,7 +125,7 @@
                         _subject: 'Nowa wiadomość ze strony DavIT Futures'
                     };
 
-                    fetch('https://formsubmit.co/ajax/dd@davit.com.pl', {
+                    fetch('https://formsubmit.co/ajax/davit.futures@gmail.com', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -140,7 +139,12 @@
                         }
                         throw new Error('Submission error');
                     })
-                    .then(function () {
+                    .then(function (res) {
+                        if (res && (res.success === "false" || res.success === false)) {
+                            // If activation needed, fallback to normal submit to trigger confirmation screen
+                            $('#contactForm')[0].submit();
+                            return;
+                        }
                         $status.removeClass('message-error')
                                .addClass('message-success')
                                .text('Thank you! Your message has been sent.')
