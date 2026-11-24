@@ -5,6 +5,9 @@ using System.Web;
 
 namespace davIT.Models
 {
+    /// <summary>
+    /// Static repository of localized content strings, navigation action names, and view model labels.
+    /// </summary>
     public static class CompanyTexts
     {
         #region setup
@@ -13,6 +16,9 @@ namespace davIT.Models
         public static string FuturesAction = "Futures";
         public static string AboutAction = "About";
         public static string ContactAction = "Contact";
+        /// <summary>
+        /// Default company brand name constant.
+        /// </summary>
         public static string NameConst = "DavIT Futures";
         public static string Name = string.Empty; //different for different pages
         public static string Footer = DateTime.Now.Year + " - " + NameConst;
