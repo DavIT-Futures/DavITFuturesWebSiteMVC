@@ -6,7 +6,36 @@ using System.Net.Mail;
 
 namespace davIT.Models
 {
-    public class EmailMessage
+    /// <summary>
+    /// Defines the contact form message payload submitted through the website.
+    /// </summary>
+    public interface IEmailMessage
+    {
+        /// <summary>
+        /// Gets or sets the sender's email address.
+        /// </summary>
+        string Sender { get; set; }
+
+        /// <summary>
+        /// Gets or sets the body text of the inquiry message.
+        /// </summary>
+        string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets the optional contact phone number supplied by the visitor.
+        /// </summary>
+        string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the originating HTTP request used to extract visitor metadata.
+        /// </summary>
+        HttpRequestBase Request { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a contact form email message and handles SMTP dispatch.
+    /// </summary>
+    public class EmailMessage : IEmailMessage
     {
         private string recipient = @"dawit@interia.pl";
         public string Sender { get; set; }
@@ -14,11 +43,17 @@ namespace davIT.Models
         public string PhoneNumber { get; set; }
         public HttpRequestBase Request { get; set; }
 
+        /// <summary>
+        /// Initializes an empty instance of the <see cref="EmailMessage"/> class.
+        /// </summary>
         public EmailMessage()
         {
 
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailMessage"/> class with visitor contact details.
+        /// </summary>
         public EmailMessage(string sender, string message, string phoneNumber, HttpRequestBase request)
         {
             this.Message = message;
