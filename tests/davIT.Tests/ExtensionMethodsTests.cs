@@ -32,5 +32,16 @@ namespace davIT.Tests
             Assert.True(request.Contains("REMOTE_ADDR"));
             Assert.False(request.Contains("HTTP_X_FORWARDED_FOR"));
         }
+
+        [Fact]
+        public void Contains_EmptyCollectionOrCaseMismatch_ReturnsFalse()
+        {
+            var emptyRequest = new FakeHttpRequest(new NameValueCollection());
+            Assert.False(emptyRequest.Contains("REMOTE_ADDR"));
+
+            var variables = new NameValueCollection { ["REMOTE_ADDR"] = "127.0.0.1" };
+            var request = new FakeHttpRequest(variables);
+            Assert.False(request.Contains("remote_addr"));
+        }
     }
 }
